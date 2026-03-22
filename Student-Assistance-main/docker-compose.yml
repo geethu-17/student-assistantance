@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./student-support-backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./student-support-backend/.env
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - student_support_net
+
+  frontend:
+    build:
+      context: ./student-support-frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - student_support_net
+
+networks:
+  student_support_net:
+    driver: bridge

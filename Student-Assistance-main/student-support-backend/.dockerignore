@@ -1,0 +1,19 @@
+# Keep Docker build context lean
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+.venv/
+venv/
+
+# Local tooling artifacts not needed in production image
+ngrok/
+ngrok.zip
+
+# VCS/docs not required for runtime image
+.git/
+.gitignore
+README.md
+DEPLOYMENT.md
